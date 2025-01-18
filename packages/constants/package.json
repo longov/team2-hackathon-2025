@@ -11,6 +11,7 @@
     "@test/plugb": "workspace:*",
     "@test/plug_feature": "workspace:*",
     "@test/plug_portfolio": "workspace:*",
+    "@test/plug_checkscam": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "uuid": "^11.0.3"
   },

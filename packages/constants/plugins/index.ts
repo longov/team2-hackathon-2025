@@ -2,6 +2,8 @@ import { PluginA } from '@test/pluga'
 import { PluginB } from '@test/plugb'
 import { PluginFeature } from '@test/plug_feature'
 import { PluginPortfolio } from '@test/plug_portfolio'
+import { PluginCheckScam } from '@test/plug_checkscam'
+
 import { TPluginData } from '../types'
 
 export const PLUGINS: TPluginData[] = [
@@ -42,6 +44,16 @@ export const PLUGINS: TPluginData[] = [
     description: 'Data portfolio user',
     image: 'https://coin98.s3.amazonaws.com/ew00D2Rxrc031LBw',
     plugin: PluginPortfolio,
+    size: '4x2',
+    status: 'active',
+  },
+  {
+    id: 'Plugin CheckScam',
+    name: 'Plugin CheckScam',
+    url: 'https://snaps.metamask.io/snap/npm/solflare-wallet/solana-snap/',
+    description: 'You can only be scammed by yourself!',
+    image: 'https://coin98.s3.amazonaws.com/ew00D2Rxrc031LBw',
+    plugin: PluginCheckScam,
     size: '4x2',
     status: 'active',
   },
