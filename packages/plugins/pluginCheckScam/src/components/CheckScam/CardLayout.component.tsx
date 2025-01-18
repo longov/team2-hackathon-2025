@@ -4,11 +4,12 @@ import { Card, CardContent, CardHeader, CardTitle, Icon } from '@repo/ui';
 import ModalDialog from '../ModalDialog';
 import Security from './Security.component';
 import Trending from './Trending.components';
+import ChatAI from './ChatAI.component'
 
 const RENDERED_DATA = {
   [FUNCS.SecurityDetection]: <Security />,
   [FUNCS.Trending]: <Trending />,
-  [FUNCS.Daily]: <>Daily</>,
+  [FUNCS.Daily]: <ChatAI />,
   [FUNCS.Noti]: <>Noti</>,
 };
 
@@ -19,11 +20,12 @@ const CardLayout = () => {
         <CardHeader>
           <CardTitle>RiskRadar</CardTitle>
         </CardHeader>
-        <CardContent className="grid gap-6">
+        <CardContent className="grid gap-6 ">
           <div className="grid grid-cols-2 gap-2">
             {MAIN_FUNCS.map((func, index) => {
               return (
                 <ModalDialog
+                  className={'overflow-auto'}
                   key={func}
                   trigger={
                     <div key={func}>

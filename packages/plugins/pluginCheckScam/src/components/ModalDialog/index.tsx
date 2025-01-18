@@ -31,7 +31,11 @@ const ModalDialog = ({ trigger, children, className, title = '' }: Props) => {
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
         </DialogHeader>
-        {children}
+        <div
+        >
+          {children}
+        </div>
+
       </DialogContent>
     </Dialog>
   );

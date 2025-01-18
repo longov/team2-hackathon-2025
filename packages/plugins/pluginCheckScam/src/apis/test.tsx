@@ -7,21 +7,22 @@ const getTrending = async () => {
     accept: 'application/json',
     'x-cg-demo-api-key': 'CG-fsX5bfdaGMmezZCai67gH1rT'
     }
-   
+
   });
 
   return res;
 };
 
 
-const getAI = async (messages: any) => {
+const getAI = async (messages: any, signal: AbortSignal) => {
   const res = await API.checkAi.post<any, APIResponse<any>>('/chat', {
     chat: messages,
   }, {
     headers: {
       accept: 'application/json',
       mode: 'no-cors',
-    }
+    },
+    signal
   });
 
   return res;
