@@ -29,6 +29,7 @@
     "@repo/tailwind-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@repo/ui": "workspace:*",
+    "@types/recharts": "^1.8.29",
     "axios": "^1.7.9",
     "lodash": "^4.17.21",
     "lucide-react": "^0.456.0",
@@ -47,7 +48,8 @@
     "size-limit": "^11.1.6",
     "tsdx": "^0.14.1",
     "tslib": "^2.8.1",
-    "typescript": "^3.9.10"
+    "typescript": "^3.9.10",
+    "@types/recharts": "^1.8.29"
   },
   "husky": {
     "hooks": {
