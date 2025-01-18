@@ -31,7 +31,9 @@
     "@repo/ui": "workspace:*",
     "axios": "^1.7.9",
     "lodash": "^4.17.21",
-    "query-string": "^9.1.1"
+    "lucide-react": "^0.456.0",
+    "query-string": "^9.1.1",
+    "recharts": "^2.15.0"
   },
   "devDependencies": {
     "@size-limit/preset-small-lib": "^11.1.6",

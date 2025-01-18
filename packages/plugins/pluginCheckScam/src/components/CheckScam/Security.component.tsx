@@ -14,7 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@repo/ui';
-
+import PieChartComponent from '../PieChart';
 import _get from 'lodash/get';
 
 enum CHAIN_NAME {
@@ -69,53 +69,63 @@ const Security = () => {
 
   const handleOnChange =
     (field: keyof InputData) =>
-    (e: React.ChangeEvent<HTMLInputElement> | string) => {
-      const data =
-        typeof e === 'string'
-          ? SUPPORTED_CHAINS[e as CHAIN_NAME]
-          : e.target.value || '';
+      (e: React.ChangeEvent<HTMLInputElement> | string) => {
+        const data =
+          typeof e === 'string'
+            ? SUPPORTED_CHAINS[e as CHAIN_NAME]
+            : e.target.value || '';
 
-      console.log({ field, data });
+        console.log({ field, data });
 
-      setInputData((prev) => ({ ...prev, [field]: data }));
-    };
+        setInputData((prev) => ({ ...prev, [field]: data }));
+      };
 
   return (
-    <div className="flex gap-x-2 text-sm w-full">
-      <div className="border border-backgroundInput rounded-lg flex items-center px-3 py-1 gap-2 hover:border-textLink flex-1">
-        <Icon name="app_search_left" />
-        <Input
-          placeholder="Search address..."
-          onChange={handleOnChange('address')}
-        />
-        <Select onValueChange={handleOnChange('chainId')}>
-          <SelectTrigger className="focus:ring-0 focus:outline-none focus:rounded-none !rounded-sm border-border-subtle h-[40px] w-fit min-w-[106px]">
-            <SelectValue placeholder={'Select chain'}>
-              <p className="text-black-1">{inputData.chainId?.name}</p>
-            </SelectValue>
-          </SelectTrigger>
-          <SelectContent className="rounded-sm text-white bg-black">
-            {CHAINS.map((chain) => {
-              return (
-                <SelectItem
-                  key={chain.name}
-                  className="rounded-sm placeholder:text-black-1 focus:bg-black/5 cursor-pointer"
-                  value={chain.name}
-                >
-                  {chain.name}
-                </SelectItem>
-              );
-            })}
-          </SelectContent>
-        </Select>
+    <div>
+      <div className="flex-1">
+        <div className="text-lg font-semibold">Security Detection</div>
+        <div className="text-muted-foreground">
+          Check if the address is a scam or not
+        </div>
+        <PieChartComponent />
       </div>
-      <Button
-        onClick={handleSearchData}
-        disabled={!inputData.address || !inputData.chainId}
-      >
-        Search
-      </Button>
+      <div className="flex gap-x-2 text-sm w-full">
+        <div className="border border-backgroundInput rounded-lg flex items-center px-3 py-1 gap-2 hover:border-textLink flex-1">
+          <Icon name="app_search_left" />
+          <Input
+            placeholder="Search address..."
+            onChange={handleOnChange('address')}
+          />
+          <Select onValueChange={handleOnChange('chainId')}>
+            <SelectTrigger className="focus:ring-0 focus:outline-none focus:rounded-none !rounded-sm border-border-subtle h-[40px] w-fit min-w-[106px]">
+              <SelectValue placeholder={'Select chain'}>
+                <p className="text-black-1">{inputData.chainId?.name}</p>
+              </SelectValue>
+            </SelectTrigger>
+            <SelectContent className="rounded-sm text-white bg-black">
+              {CHAINS.map((chain) => {
+                return (
+                  <SelectItem
+                    key={chain.name}
+                    className="rounded-sm placeholder:text-black-1 focus:bg-black/5 cursor-pointer"
+                    value={chain.name}
+                  >
+                    {chain.name}
+                  </SelectItem>
+                );
+              })}
+            </SelectContent>
+          </Select>
+        </div>
+        <Button
+          onClick={handleSearchData}
+          disabled={!inputData.address || !inputData.chainId}
+        >
+          Search
+        </Button>
+      </div>
     </div>
+
   );
 };
 
