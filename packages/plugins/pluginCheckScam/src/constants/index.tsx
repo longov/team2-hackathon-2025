@@ -4,4 +4,5 @@ export enum FUNCS {
   Noti = 'Noti',
   Daily = 'Daily',
 }
+
 export const MAIN_FUNCS = Object.values(FUNCS);
