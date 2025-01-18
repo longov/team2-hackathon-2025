@@ -55,15 +55,13 @@ function AIMessage({ text }: { text: string }) {
         </svg>
       </div>
       <div className="bg-gray-800 px-4 w-full rounded-md min-h-[60px] max-w-[90%]">
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>
-          {text}
-        </ReactMarkdown>
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>
       </div>
     </div>
   );
 }
 
-export function Message({ name, text, thinking }: MessageProps) {
+export function Message({ name, text }: MessageProps) {
   return (
     <div className="w-full min-h-[40px] text-gray-50 rounded-md text-sm font-mono mb-4">
       {name === 'ai' ? <AIMessage text={text} /> : <HumanMessage text={text} />}
