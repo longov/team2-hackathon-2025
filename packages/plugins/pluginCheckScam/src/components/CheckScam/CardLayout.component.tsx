@@ -1,11 +1,51 @@
 import { FUNCS, MAIN_FUNCS } from '../../constants';
 import { Card, CardContent, CardHeader, CardTitle, Icon } from '@repo/ui';
+import { useState } from 'react'
 import ModalDialog from '../ModalDialog';
+import GetApi from '../../apis/test';
 import Security from './Security.component';
+import { useEffect } from 'react';
+
+
+const Trending = () => {
+  const [api, setApi] = useState<any>([]);
+
+  const getApi = async () => {
+    const res = await GetApi.getTrending();
+    setApi(res)
+  }
+
+  useEffect(() => {
+    getApi()
+  },[])
+
+  console.log(api,'_apiapi')
+
+  return (
+    <div>
+      <p className="mb-5">🔥 Trending</p>
+      <div className="grid grid-cols-2 gap-2">
+        {api && api?.coins?.map((item:any,index: number) => {
+          const itemCoins = item.item;
+          if(index > 5) return;
+          const greenColor = itemCoins?.data.price_change_percentage_24h.usd > 0 ? 'text-green-500' : 'text-red-500';
+          return (
+            <div key={itemCoins.coin_id} className="flex flex-col items-center justify-between rounded-md bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary cursor-pointer hover:bg-[#4da2ff] bg-[#f7f7f81a]">
+               <p>{itemCoins.symbol}</p>
+              <p>{itemCoins?.data.price.toFixed(2)}$</p>
+              <p className={greenColor}>({itemCoins?.data.price_change_percentage_24h.usd.toFixed(2)})%</p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 
 const RENDERED_DATA = {
   [FUNCS.SecurityDetection]: <Security />,
-  [FUNCS.Trending]: <>Trending</>,
+  [FUNCS.Trending]: <Trending/>,
   [FUNCS.Daily]: <>Daily</>,
   [FUNCS.Noti]: <>Noti</>,
 };

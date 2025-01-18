@@ -129,7 +129,7 @@ class APIService {
 }
 
 export const API = {
-  checkScam: new APIService(process.env.NEXT_PUBLIC_CLIENT_ENDPOINT || '', {
+  checkScam: new APIService(process.env.NEXT_PUBLIC_CLIENT_ENDPOINT || 'https://api.coingecko.com/api/v3', {
     getToken: () => '',
     getPerSign: () => '',
   }),

@@ -1,12 +1,19 @@
 import { APIResponse } from '../types/api';
 import { API } from './core';
 
-const get = async () => {
-  const res = await API.checkScam.get<any, APIResponse<any>>('/healthcheck');
+const getTrending = async () => {
+  const res = await API.checkScam.get<any, APIResponse<any>>('/search/trending', {
+    headers: {
+    accept: 'application/json',
+    'x-cg-demo-api-key': 'CG-fsX5bfdaGMmezZCai67gH1rT'
+    }
+   
+  });
 
-  return res.data;
+  console.log(res, 'res.data');
+  return res;
 };
 
 export default {
-  get,
+  getTrending,
 };
