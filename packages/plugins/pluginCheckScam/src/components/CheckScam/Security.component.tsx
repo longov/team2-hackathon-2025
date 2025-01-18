@@ -48,6 +48,7 @@ const Security = () => {
   // const users = useUserStore((state: UserStore) => state.users);
   // const setUsers = useUserStore((state: UserStore) => state.setUsers);
   const [inputData, setInputData] = useState<InputData>({});
+  const [mess,setMess] = useState<any>('');
   // const [scannerData, setScannerData] = useState<IScannerProject>();
 
   // const { apply_filter } = useGlobalHook();
@@ -82,19 +83,28 @@ const Security = () => {
     };
 
   const buttonAskAi = async () => {
-    const messages = 'kiểm tra 0x04E9dC9537B18bE432cA6cE54adfE646F75536f5'
+    const messages = `kiểm tra ${inputData?.address}`
     const res = await GetApi.getAI(messages);
     console.log(res,'____resres')
+    setMess(res)
+  }
+
+  if(mess){
+    return (
+      <div className="max-h-[400px] overflow-y-auto">
+        <pre className="max-w-[400px] break-all text-wrap">{mess.message}</pre>
+      </div>
+    )
   }
 
   return (
     <div>
-      <div className="flex-1">
-        <div className="text-lg font-semibold">Security Detection</div>
-        <div className="text-muted-foreground">
+      <div className="flex-1 relative">
+        <div className="text-lg font-semibold mb-[5px]">Security Detection</div>
+        {/* <div className="text-muted-foreground">
           Check if the address is a scam or not
-        </div>
-        <div onClick={buttonAskAi} className="text-accent cursor-pointer">
+        </div> */}
+        <div onClick={buttonAskAi} className="absolute top-[2px] right-[5px] bg-[#f7f7f81a] cursor-pointer rounded-[4px] w-[70px] text-center">
           Ask AI
         </div>
         <PieChartComponent />

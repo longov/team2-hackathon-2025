@@ -139,7 +139,7 @@ export const API = {
   ),
   checkAi: new APIService(
     process.env.NEXT_PUBLIC_CLIENT_ENDPOINT ||
-      'http://10.10.0.249:3000',
+      'http://10.10.0.249:3001',
     {
       getToken: () => '',
       getPerSign: () => '',
