@@ -1,8 +1,9 @@
-import { UserStore, useUserStore } from '@repo/store';
+// import { UserStore, useUserStore } from '@repo/store';
 import React, { useState } from 'react';
-import DefiClient, { IScannerProject } from '../../apis/client';
+// import DefiClient, { IScannerProject } from '../../apis/client';
+import DefiClient from '../../apis/client';
 
-import { useGlobalHook } from '@repo/plugin-sdk';
+// import { useGlobalHook } from '@repo/plugin-sdk';
 import {
   Button,
   Icon,
@@ -43,16 +44,17 @@ interface InputData {
 
 const Security = () => {
   //STATES
-  const users = useUserStore((state: UserStore) => state.users);
-  const setUsers = useUserStore((state: UserStore) => state.setUsers);
+  // const users = useUserStore((state: UserStore) => state.users);
+  // const setUsers = useUserStore((state: UserStore) => state.setUsers);
   const [inputData, setInputData] = useState<InputData>({});
-  const [scannerData, setScannerData] = useState<IScannerProject>();
+  // const [scannerData, setScannerData] = useState<IScannerProject>();
 
-  const { apply_filter } = useGlobalHook();
+  // const { apply_filter } = useGlobalHook();
 
   const handleSearchData = async () => {
     const address = _get(inputData, 'address');
     const chainId = _get(inputData, 'chainId.chainIdQuery');
+
     if (!address || !chainId) return;
 
     const res = await DefiClient.queryScannerProject({
@@ -60,7 +62,9 @@ const Security = () => {
       chainId,
     });
 
-    setScannerData(res);
+    console.log({ res });
+
+    // setScannerData(res);
   };
 
   const handleOnChange =

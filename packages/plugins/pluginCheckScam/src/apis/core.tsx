@@ -1,10 +1,10 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import queryString from 'query-string';
-import { APIConfig } from '@/types/api';
 import _pickBy from 'lodash/pickBy';
 import _omit from 'lodash/omit';
 import _get from 'lodash/get';
 import _keys from 'lodash/keys';
+import { APIConfig } from '../types/api';
 
 interface MethodOptions extends AxiosRequestConfig {
   token?: string;
@@ -29,7 +29,7 @@ class APIService {
     options?: MethodOptions
   ): Promise<Data> {
     const response = await this._gateWay(options).get(url, {
-      params: _pickBy(query || {}, (v) => v === false || v),
+      params: _pickBy(query || {}, (v: any) => v === false || v),
     });
     return response.data;
   }
@@ -41,7 +41,7 @@ class APIService {
   ): Promise<Data> {
     const response = await this._gateWay(options).post(
       url,
-      _pickBy(body || {}, (v) => v === false || v)
+      _pickBy(body || {}, (v: any) => v === false || v)
     );
 
     return response.data;
@@ -68,7 +68,7 @@ class APIService {
     });
     const response = await fetch(endPoint, options);
 
-    return response.json() as Data;
+    return response.json() as any;
   }
 
   private _gateWay<Body>(options?: MethodOptions) {
@@ -129,8 +129,12 @@ class APIService {
 }
 
 export const API = {
-  checkScam: new APIService(process.env.NEXT_PUBLIC_CLIENT_ENDPOINT || 'https://api.coingecko.com/api/v3', {
-    getToken: () => '',
-    getPerSign: () => '',
-  }),
+  checkScam: new APIService(
+    process.env.NEXT_PUBLIC_CLIENT_ENDPOINT ||
+      'https://api.coingecko.com/api/v3',
+    {
+      getToken: () => '',
+      getPerSign: () => '',
+    }
+  ),
 };
