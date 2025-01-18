@@ -5,8 +5,8 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  cn,
 } from '@repo/ui';
-import { cn } from '../../../../../ui/src/lib/utils';
 
 interface Props {
   trigger: React.ReactNode;

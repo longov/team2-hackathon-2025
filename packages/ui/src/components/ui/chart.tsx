@@ -3,6 +3,9 @@
 import * as React from 'react'
 import * as RechartsPrimitive from 'recharts'
 
+import { X } from 'lucide-react'
+import { Label as LabelRecharts, PolarGrid, PolarRadiusAxis, RadialBar, RadialBarChart } from 'recharts'
+
 import { cn } from '../../lib/utils'
 
 // Format: { THEME_NAME: CSS_SELECTOR }
@@ -302,4 +305,17 @@ function getPayloadConfigFromPayload(config: ChartConfig, payload: unknown, key:
   return configLabelKey in config ? config[configLabelKey] : config[key as keyof typeof config]
 }
 
-export { ChartContainer, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent, ChartStyle }
+export {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+  ChartLegend,
+  ChartLegendContent,
+  ChartStyle,
+  LabelRecharts,
+  PolarGrid,
+  PolarRadiusAxis,
+  RadialBar,
+  RadialBarChart,
+  X,
+}
