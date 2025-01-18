@@ -17,7 +17,10 @@ const Trending = () => {
 
   console.log(api, '_apiapi');
 
-  if (!api) return <div>Loading...</div>;
+  if (!api || api.length === 0)
+    return (
+      <div className="animate-pulse rounded-md bg-white/10 w-full h-[30dvh]"></div>
+    );
 
   return (
     <div>

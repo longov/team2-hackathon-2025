@@ -43,6 +43,13 @@ const DEFAULT_PARAMS = {
     scwId: true,
     scwTitle: true,
     scwDescription: true,
+    issues: {
+      confidence: true,
+      description: true,
+      data: true,
+      impact: true,
+      id: true,
+    },
   },
   logo: true,
   stats: {
