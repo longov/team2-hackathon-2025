@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 // import DefiClient, { IScannerProject } from '../../apis/client';
 import DefiClient from '../../apis/client';
+import GetApi from '../../apis/test';
 
 // import { useGlobalHook } from '@repo/plugin-sdk';
 import {
@@ -80,12 +81,21 @@ const Security = () => {
       setInputData((prev) => ({ ...prev, [field]: data }));
     };
 
+  const buttonAskAi = async () => {
+    const messages = 'kiểm tra 0x04E9dC9537B18bE432cA6cE54adfE646F75536f5'
+    const res = await GetApi.getAI(messages);
+    console.log(res,'____resres')
+  }
+
   return (
     <div>
       <div className="flex-1">
         <div className="text-lg font-semibold">Security Detection</div>
         <div className="text-muted-foreground">
           Check if the address is a scam or not
+        </div>
+        <div onClick={buttonAskAi} className="text-accent cursor-pointer">
+          Ask AI
         </div>
         <PieChartComponent />
       </div>

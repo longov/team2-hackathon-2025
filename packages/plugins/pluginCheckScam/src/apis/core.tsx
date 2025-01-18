@@ -137,4 +137,12 @@ export const API = {
       getPerSign: () => '',
     }
   ),
+  checkAi: new APIService(
+    process.env.NEXT_PUBLIC_CLIENT_ENDPOINT ||
+      'http://10.10.0.249:3000',
+    {
+      getToken: () => '',
+      getPerSign: () => '',
+    }
+  ),
 };

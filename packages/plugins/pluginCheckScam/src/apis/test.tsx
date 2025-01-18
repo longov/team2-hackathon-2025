@@ -10,10 +10,25 @@ const getTrending = async () => {
    
   });
 
-  console.log(res, 'res.data');
   return res;
 };
 
+
+const getAI = async (messages: any) => {
+  const res = await API.checkAi.post<any, APIResponse<any>>('/chat', {
+    chat: messages,
+  }, {
+    headers: {
+      accept: 'application/json',
+      mode: 'no-cors',
+    }
+  });
+
+  return res;
+};
+
+
 export default {
   getTrending,
+  getAI
 };
