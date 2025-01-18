@@ -16,6 +16,11 @@ import {
 } from '@repo/ui';
 
 import { ChartContainer } from '@repo/ui';
+import { InputData } from '../CheckScam/Security.component';
+import { IScannerProject } from '../../apis/client';
+
+import _isEmpty from 'lodash/isEmpty';
+import _get from 'lodash/get';
 
 const chartConfig = {
   visitors: {
@@ -23,16 +28,25 @@ const chartConfig = {
   },
   safari: {
     label: 'Score',
-    // color: 'hsl(var(--chart-4))',
+    color: 'hsl(var(--chart-4))',
   },
 } as any;
 
-const PieChartComponent = () => {
+interface Props extends InputData {
+  data?: IScannerProject;
+}
+
+const PieChartComponent = ({ data }: Props) => {
+  const score = _get(data, 'aiScore');
+
+  if (!data || _isEmpty(data) || !score) return null;
+  // return <div className="py-4 text-center">No Data!</div>;
+
   const chartData = [
     {
       browser: 'safari',
-      visitors: 50,
-      //  fill: 'var(--color-safari)'
+      visitors: data?.aiScore || 0,
+      fill: 'var(--color-safari)',
     },
   ];
 
