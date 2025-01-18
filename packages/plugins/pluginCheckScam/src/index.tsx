@@ -1,6 +1,6 @@
 import { useGlobalHook, useRegisterPlugin } from '@repo/plugin-sdk';
 import React from 'react';
-import Portfolio from './components/CheckScam';
+import CheckScam from './components/CheckScam';
 import { TUserInfo } from '@repo/store/types';
 
 export const PluginCheckScam = () => {
@@ -38,9 +38,8 @@ export const PluginCheckScam = () => {
   });
   return (
     <div className="border rounded-lg p-4 border-dividerColorDefault">
-      This is Plugin Check Scam
-      <Portfolio />
-      {do_action('subtitle')}
+      <CheckScam />
+      {/* {do_action('subtitle')} */}
     </div>
   );
 };
