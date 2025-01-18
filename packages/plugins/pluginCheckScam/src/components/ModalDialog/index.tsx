@@ -20,7 +20,7 @@ const ModalDialog = ({ trigger, children, className, title = '' }: Props) => {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger>{trigger}</DialogTrigger>
-      <DialogContent>
+      <DialogContent className={className}>
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
         </DialogHeader>

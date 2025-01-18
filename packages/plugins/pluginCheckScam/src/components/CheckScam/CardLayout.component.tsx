@@ -1,3 +1,4 @@
+import React from 'react';
 import { FUNCS, MAIN_FUNCS } from '../../constants';
 import { Card, CardContent, CardHeader, CardTitle, Icon } from '@repo/ui';
 import ModalDialog from '../ModalDialog';
