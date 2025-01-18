@@ -69,16 +69,16 @@ const Security = () => {
 
   const handleOnChange =
     (field: keyof InputData) =>
-      (e: React.ChangeEvent<HTMLInputElement> | string) => {
-        const data =
-          typeof e === 'string'
-            ? SUPPORTED_CHAINS[e as CHAIN_NAME]
-            : e.target.value || '';
+    (e: React.ChangeEvent<HTMLInputElement> | string) => {
+      const data =
+        typeof e === 'string'
+          ? SUPPORTED_CHAINS[e as CHAIN_NAME]
+          : e.target.value || '';
 
-        console.log({ field, data });
+      console.log({ field, data });
 
-        setInputData((prev) => ({ ...prev, [field]: data }));
-      };
+      setInputData((prev) => ({ ...prev, [field]: data }));
+    };
 
   return (
     <div>
@@ -89,15 +89,15 @@ const Security = () => {
         </div>
         <PieChartComponent />
       </div>
-      <div className="flex gap-x-2 text-sm w-full">
-        <div className="border border-backgroundInput rounded-lg flex items-center px-3 py-1 gap-2 hover:border-textLink flex-1">
+      <div className="flex gap-x-2 text-sm w-full mt-2">
+        <div className="border border-backgroundInput rounded-lg flex items-center px-2 py-1 gap-2 hover:border-textLink flex-1">
           <Icon name="app_search_left" />
           <Input
             placeholder="Search address..."
             onChange={handleOnChange('address')}
           />
           <Select onValueChange={handleOnChange('chainId')}>
-            <SelectTrigger className="focus:ring-0 focus:outline-none focus:rounded-none !rounded-sm border-border-subtle h-[40px] w-fit min-w-[106px]">
+            <SelectTrigger className="border-none focus:ring-0 focus:outline-none focus:rounded-none !rounded-sm border-border-subtle h-[40px] w-fit min-w-[106px]">
               <SelectValue placeholder={'Select chain'}>
                 <p className="text-black-1">{inputData.chainId?.name}</p>
               </SelectValue>
@@ -118,6 +118,7 @@ const Security = () => {
           </Select>
         </div>
         <Button
+          className="mt-1"
           onClick={handleSearchData}
           disabled={!inputData.address || !inputData.chainId}
         >
@@ -125,7 +126,6 @@ const Security = () => {
         </Button>
       </div>
     </div>
-
   );
 };
 
