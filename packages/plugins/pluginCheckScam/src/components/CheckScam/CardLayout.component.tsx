@@ -26,10 +26,11 @@ const CardLayout = () => {
               return (
                 <ModalDialog
                   className={'overflow-auto'}
+                  classNameTrigger="min-h-[5rem] hover:bg-[#4da2ff] bg-[#f7f7f81a] rounded-lg"
                   key={func}
                   trigger={
-                    <div key={func}>
-                      <div className="flex flex-col items-center justify-between rounded-md bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary cursor-pointer hover:bg-[#4da2ff] bg-[#f7f7f81a]">
+                    <div key={func} className="min-h-[5rem]">
+                      <div className=" flex flex-col items-center justify-between rounded-md bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary cursor-pointer">
                         {index === 0 ? (
                           <svg
                             xmlns="http://www.w3.org/2000/svg"

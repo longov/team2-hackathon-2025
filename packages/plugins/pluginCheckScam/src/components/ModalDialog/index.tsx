@@ -12,15 +12,22 @@ interface Props {
   trigger: React.ReactNode;
   children: React.ReactNode;
   className?: string;
+  classNameTrigger?: string;
   title?: string;
 }
 
-const ModalDialog = ({ trigger, children, className, title = '' }: Props) => {
+const ModalDialog = ({
+  trigger,
+  children,
+  className,
+  title = '',
+  classNameTrigger,
+}: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger>{trigger}</DialogTrigger>
+      <DialogTrigger className={classNameTrigger}>{trigger}</DialogTrigger>
       <DialogContent
         className={cn(
           // "pt-0 bg-[url('https://cdn.prod.website-files.com/6425f546844727ce5fb9e5ab/6568c438caca9358f397a709_Data_cube_v04_v03_1920_coloured-poster-00001.jpg')]",
@@ -31,11 +38,7 @@ const ModalDialog = ({ trigger, children, className, title = '' }: Props) => {
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
         </DialogHeader>
-        <div
-        >
-          {children}
-        </div>
-
+        <div className="overflow-auto">{children}</div>
       </DialogContent>
     </Dialog>
   );

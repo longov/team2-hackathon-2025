@@ -16,18 +16,9 @@ const getTrending = async () => {
 };
 
 const getAI = async (messages: any) => {
-  const res = await API.checkAi.post<any, APIResponse<any>>(
-    '/chat',
-    {
-      chat: messages,
-    },
-    {
-      headers: {
-        accept: 'application/json',
-        mode: 'no-cors',
-      },
-    }
-  );
+  const res = await API.checkAi.post<any, APIResponse<any>>('/chat', {
+    chat: messages,
+  });
 
   return res;
 };

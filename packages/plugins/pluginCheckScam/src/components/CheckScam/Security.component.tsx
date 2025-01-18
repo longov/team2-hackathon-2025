@@ -203,7 +203,7 @@ const Security = () => {
   if (mess) {
     return (
       <div className="max-h-[400px] overflow-y-auto">
-        <pre className="max-w-[400px] break-all text-wrap">{mess.message}</pre>
+        <pre className="max-w-[400px] text-wrap">{mess.message}</pre>
       </div>
     );
   }
@@ -211,7 +211,9 @@ const Security = () => {
   return (
     <div>
       <div className="flex-1 relative">
-        <div className="text-lg font-semibold mb-[5px]">Security Detection</div>
+        <div className="text-lg font-semibold mb-[25px]">
+          Security Detection
+        </div>
         <div className="min-h-[2rem]">
           {isLoading ? (
             <div className="animate-pulse rounded-md bg-white/10 w-full h-[30dvh]"></div>

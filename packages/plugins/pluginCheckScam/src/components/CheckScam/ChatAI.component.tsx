@@ -87,7 +87,7 @@ const ChatAI = () => {
     assistantThinking: false,
     isWriting: false,
     controller: null,
-  }) as any;
+  });
 
   const promptInput = useRef<HTMLTextAreaElement>(null);
 
@@ -135,7 +135,7 @@ const ChatAI = () => {
   return (
     <div className="flex h-full relative flex-1">
       <main className="relative h-full w-full transition-width flex flex-col overflow-hidden items-stretch max-w-3xl ml-auto mr-auto pb-12 font-default">
-        <div className="flex-1 overflow-auto  min-h-[50dvh] max-h-[50dvh]">
+        <div className="flex-1 overflow-auto min-h-[50dvh] max-h-[50dvh]">
           <ScrollToBottom
             className="relative h-full pb-14 pt-6"
             scrollViewClassName="h-full overflow-y-auto"
@@ -145,13 +145,16 @@ const ChatAI = () => {
                 <div className="flex flex-col prose prose-lg prose-invert">
                   {state &&
                     state?.messages.length > 0 &&
-                    state?.messages?.map((message: any, i: any) => {
+                    (state as any)?.messages?.map((message: any, i: any) => {
                       return (
                         <Message
                           key={i}
                           name={message.name}
                           text={message.text}
-                          thinking={state.assistantThinking}
+                          thinking={
+                            state.assistantThinking &&
+                            i === state.messages.length - 1
+                          }
                         />
                       );
                     })}
@@ -172,7 +175,7 @@ const ChatAI = () => {
               </button>
             </div>
           )}
-          <div className="relative flex flex-col w-full p-3  bg-gray-800 rounded-md shadow ring-1 ring-gray-200 dark:ring-gray-600 focus-within:ring-2 focus-within:ring-inset dark:focus-within:ring-indigo-600 focus-within:ring-indigo-600">
+          <div className="relative flex flex-col w-full p-3  bg-gray-800 rounded-md shadow focus-within:ring-0 !ring-0 !focus-visible:ring-0">
             <label htmlFor="prompt" className="sr-only">
               Prompt
             </label>
@@ -183,7 +186,7 @@ const ChatAI = () => {
               rows={1}
               maxRows={6}
               onKeyDown={handlePromptKey}
-              className="m-0 w-full resize-none border-0 bg-transparent  pr-7 focus:ring-0 focus-visible:ring-0 dark:bg-transparent text-gray-800 dark:text-gray-50 text-base"
+              className="m-0 w-full resize-none border-0 bg-transparent !ring-0 pr-7 !focus:ring-0 !focus-within:ring-0 !focus-visible:ring-0 dark:!focus-visible:ring-0  text-gray-800 dark:text-gray-50 text-base outline-none"
               placeholder="Nhắn cho chatbot của chúng tôi..."
               defaultValue=""
             />
